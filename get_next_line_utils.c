@@ -45,26 +45,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	total_str[i] = '\0';
 	return (total_str);
 }
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char			*substr;
-	unsigned int	start_i;
-	unsigned int	size;
-
-	start_i = 0;
-	size = 0;
-	if (!s)
-		return (NULL);
-	while (start_i < start && s[start_i])
-		start_i++;
-	while (size < len && s[size + start_i])
-		size++;
-	substr = (char *)malloc(size + 1);
-	if (!substr)
-		return (NULL);
-	substr[size] = '\0';
-	while (size--)
-		substr[size] = s[start_i + size];
-	return (substr);
-}
