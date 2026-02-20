@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <unistd.h>
 
 static char	*to_read_updater(char *to_read)
@@ -80,24 +80,24 @@ static char *spt_to_read(int fd, char *to_read)
 	return(to_read);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line_bonus(int fd)
 {
-	static char *to_read;
+	static char *to_read[MAX_FD];
 	char *line;
 
-	if(fd < 0 || 0 <= BUFFER_SIZE)
+	if(fd < 0 || 0 <= BUFFER_SIZE || fd >= MAX_FD)
 		return (NULL);
-	to_read = spt_to_read(fd, to_read);
-	if(!to_read)
+	to_read[fd] = spt_to_read(fd, to_read[fd]);
+	if(!to_read[fd])
 		return (NULL);
-	line = appointer(to_read);
+	line = appointer(to_read[fd]);
 	if(!line)
 	{
-		spt_free(to_read);
-		to_read = NULL;
+		spt_free(to_read[fd]);
+		to_read[fd] = NULL;
 		return (NULL);
 	}
-	to_read = to_read_updater(to_read);
+	to_read[fd] = to_read_updater(to_read[fd]);
 	return(line);
 	
 }

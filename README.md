@@ -27,6 +27,6 @@ Kodunuza uygun başlıklardan birini ekleyin:
 
 ### Bonus versiyonunu kullanmak için:
 
-* cc -Wall -Wextra -Werror main.c get_next_line_bonus.c get_next_line_utils_bonus.c
+* cc -Wall -Wextra -Werror *.c get_next_line_bonus.c get_next_line_utils_bonus.c
 
 Bonus bölümde fonksiyonumuz birden fazla ***File Descriptor*** ile çalışabilir 
