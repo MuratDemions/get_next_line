@@ -1,9 +1,27 @@
 #include "get_next_line.h"
+#include <unistd.h>
 
-static void *spt_free(void *freeable_area)
+static char	*to_read_updater(char *to_read)
 {
-	free(freeable_area);
-	return (NULL);
+	char		*new_to_read;
+	long long	i;
+
+	i = 0;
+	while (to_read[i] != '\n' && to_read[i] != '\0')
+		i++;
+	if (to_read[i] == '\0')
+		return (spt_free(to_read));
+	new_to_read = malloc(ft_strlen(to_read) - i);
+	if (!new_to_read)
+		return (spt_free(to_read));
+	long long	j;
+	j = 0;
+	while (to_read[++i])
+		new_to_read[j++] = to_read[i];
+	new_to_read[j] = '\0';
+	spt_free(to_read);
+	return (new_to_read);
+
 }
 
 static char *appointer(char *to_read)
@@ -33,7 +51,7 @@ static char *appointer(char *to_read)
 	return (line);
 
 }
-static void *spt_to_read(int fd, char *to_read)
+static char *spt_to_read(int fd, char *to_read)
 {
 	char		*txt;
 	long long	txtlen;
@@ -47,14 +65,14 @@ static void *spt_to_read(int fd, char *to_read)
 		txtlen = read(fd, txt, BUFFER_SIZE);
 		if (txtlen == -1)
 		{
-			spt_free(txt);
+			free(txt);
 			return (spt_free(to_read));
 		}
 		txt[txtlen] = '\0';
 		to_read = ft_strjoin(to_read, txt);
 		if(!to_read)
 		{
-			spt_free(txt);
+			free(txt);
 			return(spt_free(to_read));
 		}
 	}
@@ -75,10 +93,11 @@ char	*get_next_line(int fd)
 	line = appointer(to_read);
 	if(!line)
 	{
-		free(to_read);
+		spt_free(to_read);
 		to_read = NULL;
 		return (NULL);
 	}
+	to_read = to_read_updater(to_read);
 	return(line);
 	
 }
