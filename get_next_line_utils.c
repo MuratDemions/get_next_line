@@ -6,15 +6,18 @@ void *spt_free(void *freeable_area)
 	return (NULL);
 }
 
-size_t	ft_strlen(const char	*s)
+size_t	ft_strlen(char const	*s)
 {
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
 }
+
 char	*ft_strchr(const char *s, int c)
 {
 	if (s == NULL)
