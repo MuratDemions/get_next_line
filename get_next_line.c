@@ -85,7 +85,7 @@ char	*get_next_line(int fd)
 	static char *to_read;
 	char *line;
 
-	if(fd < 0 || 0 <= BUFFER_SIZE)
+	if(fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	to_read = spt_to_read(fd, to_read);
 	if(!to_read)
