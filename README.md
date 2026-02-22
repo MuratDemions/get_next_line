@@ -29,4 +29,14 @@ Kodunuza uygun başlıklardan birini ekleyin:
 
 * cc -Wall -Wextra -Werror *.c get_next_line_bonus.c get_next_line_utils_bonus.c
 
-Bonus bölümde fonksiyonumuz birden fazla ***File Descriptor*** ile çalışabilir 
+Bonus bölümde fonksiyonumuz birden fazla ***File Descriptor*** ile çalışabilir
+
+### Kaynakça
+
+* Kampüsteki akranlarım
+
+* ChatGPT: static değişken kavramlarını öğrenmek için
+
+* man 2 read(POSIX Programmer's Manual)
+
+* tutorialpoint web sitesi nden bazı formlara baktım

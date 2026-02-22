@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: musipit <musipit@student.42kocaeli.com.tr> #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026-02-22 09:09:00 by musipit           #+#    #+#             */
+/*   Updated: 2026-02-22 09:09:00 by musipit          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
 void *spt_free(void *freeable_area)
@@ -42,9 +54,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	total_len = ft_strlen(s1) + ft_strlen(s2);
 	total_str = (char *)malloc(total_len + 1);
 	if (!total_str)
-	{
-		return (NULL);
-	}
+		return (spt_free(s1));
 	i = 0;
 	while (s1 && *s1)
 	{
@@ -57,7 +67,5 @@ char	*ft_strjoin(char *s1, char *s2)
 		i++;
 	}
 	total_str[i] = '\0';
-	spt_free(s1);
-	spt_free(s2);
 	return (total_str);
 }
