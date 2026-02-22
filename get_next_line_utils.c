@@ -42,7 +42,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	total_len = ft_strlen(s1) + ft_strlen(s2);
 	total_str = (char *)malloc(total_len + 1);
 	if (!total_str)
-		return (NULL);
+		return (spt_free(s1));
 	i = 0;
 	while (s1 && *s1)
 	{
@@ -55,6 +55,5 @@ char	*ft_strjoin(char *s1, char *s2)
 		i++;
 	}
 	total_str[i] = '\0';
-	spt_free(s1);
 	return (total_str);
 }

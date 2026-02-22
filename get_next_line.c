@@ -19,7 +19,7 @@ static char	*to_read_updater(char *to_read)
 	while (to_read[++i])
 		new_to_read[j++] = to_read[i];
 	new_to_read[j] = '\0';
-	spt_free(to_read);
+	free(to_read);
 	return (new_to_read);
 
 }
@@ -46,8 +46,8 @@ static char *appointer(char *to_read)
 		i++;
 	}
 	if(to_read[i] == '\n')
-		line[i] = '\n';
-	line[i+1] = '\0';
+		line[i++] = '\n';
+	line[i] = '\0';
 	return (line);
 
 }
@@ -55,6 +55,7 @@ static char *spt_to_read(int fd, char *to_read)
 {
 	char		*txt;
 	long long	txtlen;
+	char	*temp;
 
 	txtlen = 1;
 	txt = malloc(BUFFER_SIZE + 1);
@@ -69,12 +70,9 @@ static char *spt_to_read(int fd, char *to_read)
 			return (spt_free(to_read));
 		}
 		txt[txtlen] = '\0';
-		to_read = ft_strjoin(to_read, txt);
-		if(!to_read)
-		{
-			free(txt);
-			return(spt_free(to_read));
-		}
+		temp = ft_strjoin(to_read, txt);
+		free(to_read);
+		to_read = temp;
 	}
 	spt_free(txt);
 	return(to_read);
@@ -85,13 +83,13 @@ char	*get_next_line(int fd)
 	static char *to_read;
 	char *line;
 
-	if(fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	to_read = spt_to_read(fd, to_read);
-	if(!to_read)
+	if (!to_read)
 		return (NULL);
 	line = appointer(to_read);
-	if(!line)
+	if (!line)
 	{
 		spt_free(to_read);
 		to_read = NULL;

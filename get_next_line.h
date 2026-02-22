@@ -8,7 +8,6 @@
 # endif
 
 char    *get_next_line(int fd);
-void gnlfree(void *to_read);
 size_t  ft_strlen(const char *s);
 void    *spt_free(void *freeable_area);
 char    *ft_strchr(const char *s, int c);
