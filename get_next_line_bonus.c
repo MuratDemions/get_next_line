@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: musipit <musipit@student.42kocaeli.com.tr> #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026-02-22 09:10:36 by musipit           #+#    #+#             */
-/*   Updated: 2026-02-22 09:10:36 by musipit          ###   ########.fr       */
+/*   Updated: 2026/02/22 12:32:55 by musipit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static char	*to_read_updater(char *to_read)
 {
 	char		*new_to_read;
 	long long	i;
+	long long	j;
 
 	i = 0;
 	while (to_read[i] != '\n' && to_read[i] != '\0')
@@ -26,30 +27,28 @@ static char	*to_read_updater(char *to_read)
 	new_to_read = malloc(ft_strlen(to_read) - i);
 	if (!new_to_read)
 		return (spt_free(to_read));
-	long long	j;
 	j = 0;
 	while (to_read[++i])
 		new_to_read[j++] = to_read[i];
 	new_to_read[j] = '\0';
 	free(to_read);
 	return (new_to_read);
-
 }
 
-static char *appointer(char *to_read)
+static char	*appointer(char *to_read)
 {
 	char		*line;
 	long long	i;
 
 	i = 0;
-	if(!to_read[i])
+	if (!to_read[i])
 		return (NULL);
 	while (to_read[i] != '\n' && to_read[i] != '\0')
-		i++;	
-	if(to_read[i] == '\n')
+		i++;
+	if (to_read[i] == '\n')
 		i++;
 	line = malloc(i + 1);
-	if(!line)
+	if (!line)
 		return (NULL);
 	i = 0;
 	while (to_read[i] != '\n' && to_read[i] != '\0')
@@ -57,23 +56,23 @@ static char *appointer(char *to_read)
 		line[i] = to_read[i];
 		i++;
 	}
-	if(to_read[i] == '\n')
+	if (to_read[i] == '\n')
 		line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
-
 }
-static char *spt_to_read(int fd, char *to_read)
+
+static char	*spt_to_read(int fd, char *to_read)
 {
 	char		*txt;
 	long long	txtlen;
-	char	*temp;
+	char		*temp;
 
 	txtlen = 1;
 	txt = malloc(BUFFER_SIZE + 1);
 	if (!txt)
 		return (spt_free(to_read));
-	while(txtlen > 0 && !ft_strchr(to_read, '\n'))
+	while (txtlen > 0 && !ft_strchr(to_read, '\n'))
 	{
 		txtlen = read(fd, txt, BUFFER_SIZE);
 		if (txtlen == -1)
@@ -87,13 +86,13 @@ static char *spt_to_read(int fd, char *to_read)
 		to_read = temp;
 	}
 	spt_free(txt);
-	return(to_read);
+	return (to_read);
 }
 
 char	*get_next_line(int fd)
 {
-	static char *to_read[MAX_FD];
-	char *line;
+	static char	*to_read[MAX_FD];
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -108,6 +107,5 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	to_read[fd] = to_read_updater(to_read[fd]);
-	return(line);
-	
+	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: musipit <musipit@student.42kocaeli.com.tr> #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026-02-22 09:09:38 by musipit           #+#    #+#             */
-/*   Updated: 2026-02-22 09:09:38 by musipit          ###   ########.fr       */
+/*   Updated: 2026/02/22 12:36:48 by musipit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 #  define MAX_FD 1024
 # endif
 
-char    *get_next_line_bonus(int fd);
-size_t  ft_strlen(const char *s);
-void    *spt_free(void *freeable_area);
-char    *ft_strchr(const char *s, int c);
-char    *ft_strjoin(char *s1, char *s2);
+char	*get_next_line_bonus(int fd);
+size_t	ft_strlen(const char *s);
+void	*spt_free(void *freeable_area);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif

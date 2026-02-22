@@ -6,13 +6,13 @@
 /*   By: musipit <musipit@student.42kocaeli.com.tr> #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026-02-22 09:08:18 by musipit           #+#    #+#             */
-/*   Updated: 2026-02-22 09:08:18 by musipit          ###   ########.fr       */
+/*   Updated: 2026/02/22 12:34:23 by musipit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void *spt_free(void *freeable_area)
+void	*spt_free(void *freeable_area)
 {
 	free(freeable_area);
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: musipit <musipit@student.42kocaeli.com.tr> #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026-02-22 09:09:20 by musipit           #+#    #+#             */
-/*   Updated: 2026-02-22 09:09:20 by musipit          ###   ########.fr       */
+/*   Updated: 2026/02/22 12:28:17 by musipit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 #  define BUFFER_SIZE 42
 # endif
 
-char    *get_next_line(int fd);
-size_t  ft_strlen(const char *s);
-void    *spt_free(void *freeable_area);
-char    *ft_strchr(const char *s, int c);
-char    *ft_strjoin(char *s1, char *s2);
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
+void	*spt_free(void *freeable_area);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif
